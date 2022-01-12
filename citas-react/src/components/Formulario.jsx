@@ -1,4 +1,6 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
+//estoy importando estos hooks
 //py padding y, me separa de los bordes de arriba y abajo del div
 //px padding x, me separa de los bordes de derecha e izquierda del div
 
@@ -31,15 +33,13 @@ const Formulario = () => {
 
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor="alta" className='block text-indigo-700 uppercase font-black'> ALTA </label>
+                        <label htmlFor="alta" className='block text-indigo-700 uppercase font-black'> Alta: </label>
                         <input id="alta" type="date" className='border-2 w-full p-1 mt-2 rounded-md'/>
-
                     </div>
-                    
-                    <div className='mb-3'>
-                        <label htmlFor="sintomas" className='block text-indigo-700 uppercase font-black'> ALTA </label>
-                        <textarea id="sintomas" className='border-2 w-full p-1 mt-2 rounded-md' placeholder='Describe los síntomas'/>
 
+                    <div className='mb-3'>
+                        <label htmlFor="sintomas" className='block text-indigo-700 uppercase font-black'> Describa Síntomas: </label>
+                        <textarea id="sintomas" className='border-2 w-full p-1 mt-2 rounded-md' placeholder='Describe los síntomas'/>
                     </div>
                     
             <input type="submit" className='bg-indigo-600 rounded p-1 w-full text-white shadow-md uppercase font-black hover:font-extrabold cursor-cell transition-opacity'/>

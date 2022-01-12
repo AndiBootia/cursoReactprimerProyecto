@@ -1,0 +1,11 @@
+QUE SON LOS HOOKS
+
+
+React cuenta con una API muy sencilla que permite crear todo tipo de apps por medio de algo llamado HOOKS
+
+HOOK:
+---> basicos: useState, useEffect, useContext
+---> adicionales: useReducer, useCallback, useMemo, useRef, useImperativeHandle, useLayoutEfect, useDebugValue
+
+Podemos crear nuestros propios hooks, de esta forma se pude separar el codigo en funciones reutilizables y sacar el beneficio de lo que
+React ofrece
