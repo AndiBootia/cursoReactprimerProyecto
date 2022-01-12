@@ -11,9 +11,9 @@ const ListadoPacientes = () => {
                 <span className='text-indigo-600 font-bold text-lg'> Pacientes y Citas</span>
 
            </p>
-           <div className='mt-6 bg-blue-200 ml-10 rounded py-10 px-5'>
-                <p>Nombre: {" "}
-                    <span> Hook </span>
+           <div className='mt-6 bg-blue-200 ml-10 rounded-xl py-10 px-5 shadow-md'>
+                <p className='font-bold mb-3 text-gray-700 uppercase'>Nombre: {" "}
+                    <span className='font-normal'> Hook </span>
                 </p>
 
            </div>
