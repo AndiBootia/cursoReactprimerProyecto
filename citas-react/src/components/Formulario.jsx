@@ -1,11 +1,12 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 //estoy importando estos hooks
+import Error from './Error'
 //py padding y, me separa de los bordes de arriba y abajo del div
 //px padding x, me separa de los bordes de derecha e izquierda del div
 
 
-const Formulario = () => {
+const Formulario = ({pacientes, setPacientes}) => {
 
 
 const [nombre, setNombre] = useState(" ")
@@ -26,9 +27,20 @@ const handleSubmit = (e) => { //siempre que aprete el submite, se va a ejecutar 
  }
 
  setError(false) //se vuelve a poner en false, para que la alerta se vaya
- 
 
- console.log("Enviando")
+const objetoPaciente = {
+    nombre,
+    propietario,
+    email,
+    alta,
+    sintomas
+}
+
+ setPacientes([...pacientes, objetoPaciente]); //toma una copia del viejo array de pacientes y le mete al final el objetoPaciente
+
+//reiniciar el form
+
+
 }
 
 /*console.log(nombre) //muestra: " "
@@ -50,10 +62,8 @@ console.log(nombre)//muestra: hook*/
 
             <form className='bg-blue-200 shadow-md rounded-lg py-10 px-5 mb-10'
             onSubmit={handleSubmit}>
-                {error && (
-                <div className='bg-blue-500 rounded-lg shadow-md p-1 w-FULL mb-10 text-center'>
-                    <p className='text-white'>HAY CAMPOS VACIOS</p>
-                </div>)
+                { error && <Error><p>Todos los campos son obligatorios</p></Error>
+              
                 }
                     <div className='mb-3'>
                         <label htmlFor="mascota" className='block text-indigo-700 uppercase font-black'> Nombre mascota: </label>

@@ -13,13 +13,22 @@ function App() {
     //mr margin right
 
     const [pacientes, setPacientes] = useState([])
+
+    /*const toma1valor = ((valor) => {
+        console.log(valor)
+    })*/
     return (      
   
 <div className="container mx-auto mt-20"> 
-    <Header/> 
+    <Header
+    /*numeros={ 1 }
+    toma1valor={toma1valor}*//> 
     <div className="mt-12 md:flex">
-    <Formulario/>
-    <ListadoPacientes/> 
+    <Formulario
+    pacientes={pacientes} //estoy pasando la lista de pacientes a formulario
+    setPacientes={setPacientes}/>
+    <ListadoPacientes
+    pacientes={pacientes}/> 
     </div>      
     
 </div>

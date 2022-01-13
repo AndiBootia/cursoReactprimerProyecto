@@ -3,7 +3,8 @@ import Pacientes from './Pacientes'
 
 //width ---> ancho
 
-const ListadoPacientes = () => {
+const ListadoPacientes = ({pacientes}) => {
+    console.log({pacientes})
     return (
         <div className='md:w-1/2 lg:w-3/5 md:h-screen'>
            <h2 className='font-black text-3xl text-center mr-4'>Listado Pacientes</h2> 
@@ -13,10 +14,8 @@ const ListadoPacientes = () => {
            </p>
            <div className='h-screen overflow-y-scroll md:mb-10'>
            <Pacientes/>
-           <Pacientes/>
-           <Pacientes/>
-           <Pacientes/>
-           <Pacientes/>
+           
+           
            </div>
            
            

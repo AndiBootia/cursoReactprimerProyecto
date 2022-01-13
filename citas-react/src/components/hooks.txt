@@ -56,3 +56,16 @@ Los state o funciones, creados en un componente, estan solo disponibles, para es
 props
 
 Los props, solo se pasan del PADRE al HIJO
+
+< Header nombreProp = {datos o Funciones} />
+
+ejemplo:
+
+<Header
+clientes = {clientes}
+admin={false}
+setClientes={setClientes}
+titulo="tienda virtual"
+/>
+
+Siempre que se va a pasar entre varios componentes, conviene ponerlo en el componente principal.
