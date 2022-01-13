@@ -8,4 +8,51 @@ HOOK:
 ---> adicionales: useReducer, useCallback, useMemo, useRef, useImperativeHandle, useLayoutEfect, useDebugValue
 
 Podemos crear nuestros propios hooks, de esta forma se pude separar el codigo en funciones reutilizables y sacar el beneficio de lo que
-React ofrece
+React ofrece.
+
+State (Estado) ---> Estado de nuestra aplicacion. El estado es una variable con informacion relevante en nuestra aplicacin de react, algunas
+veces el state pertenece a algun componente en específico o algunas veces deseas compartirlo a lo largo de diferentes componentes.
+Por ejemplo, si tengo un formulario, probablemente, tenga un state que valide el estado de ese formulario...
+
+El state se crea con la funcion: useState()
+
+const [cliente, setCliente] = useState({})
+
+cliente es la variable, que contiene el valor del estado.
+setCliente, es el modificador, que va a modificar esa variable, seteada antes, en este caso, cliente. SOLAMENTE, PUEDE MODIFICAR ESE ESTADO (CLIENTE), NO 
+PUEDE MODIFICAR OTROS.
+
+useState ---> es la funcion que importamos arriba, en este caso, tiene llaves vacías, por lo cual, empieza como un objeto vacio.
+
+const [total, setTotal] = useState(0) (en este caso, el valor inicial es 0, pero conforme pase el tiempo, se va a ir modificando)
+
+const [clientes, setClientes] = useState([]), el valor inicial es un arreglo vacio
+
+const [modal, setModal] = useState(false)
+
+REACT REACCIONA EN BASE AL STATE. Cuando cambia el state, la aplicacion de React, va a renderizar y actualizarse con estos cambios.
+
+Para modificar el state, se utiliza la funcion que extraemos, cuando decalaramos el state, en nuestro componente (setTotal, setModal, etc...)
+
+
+Los Hooks se colocan en la parte superior de los componentes de react. No se deben colocar dentro de condicionales, ni tampoco adentro del return
+
+
+EVENTOS ---> Son camelCase, por ejemplo, onChange
+
+JSX
+<button onClick={ descargarPedidos()}>
+    descargar Pedidos
+    <button/>
+
+<form onSubmit={handleSumbit}>
+    <button type="submit"> Añadir Cliente <button/>
+    <form/>
+
+PROPS ---> STATE PARA USAR EN VARIOS COMPONENTES, ES DECIR PASAR EL ESTADO DE UN COMPONENTE A OTRO.
+
+Sirven para pasar variables o funciones, de un componente a otro. 
+Los state o funciones, creados en un componente, estan solo disponibles, para ese componente. La forma de pasarlos de un componente a otro es a través de los
+props
+
+Los props, solo se pasan del PADRE al HIJO

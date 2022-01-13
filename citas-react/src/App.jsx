@@ -1,3 +1,4 @@
+import {useState} from "react"
 import Formulario from "./components/Formulario"
 import Header from "./components/Header"
 import ListadoPacientes from "./components/ListadoPacientes"
@@ -10,6 +11,8 @@ function App() {
     //mt margin top
     //ml margin left, etc
     //mr margin right
+
+    const [pacientes, setPacientes] = useState([])
     return (      
   
 <div className="container mx-auto mt-20"> 
