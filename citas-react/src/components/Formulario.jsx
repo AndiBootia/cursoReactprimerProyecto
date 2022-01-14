@@ -9,15 +9,24 @@ import Error from './Error'
 const Formulario = ({pacientes, setPacientes}) => {
 
 
-const [nombre, setNombre] = useState(" ")
-const [propietario, setPropietario] = useState(" ")
-const [email, setEmail] = useState(" ")
-const [alta, setAlta] = useState(" ")
-const [sintomas, setSintomas] = useState(" ")
+const [nombre, setNombre] = useState('')
+const [propietario, setPropietario] = useState('')
+const [email, setEmail] = useState('')
+const [alta, setAlta] = useState('')
+const [sintomas, setSintomas] = useState('')
 
 const [error, setError] = useState(false)
 
-const handleSubmit = (e) => { //siempre que aprete el submite, se va a ejecutar esta funcion, por lo cual, si esta todo bien, va a ser false la alerta
+const randomIdGenerator = () => {
+    const fecha = Date.now().toString(36)
+    const random = Math.random().toString(36).substring(2) //substring saca los primeros 2 digitos
+    const idRandom = fecha + random
+    
+    return idRandom
+    
+    }
+
+const handleSubmit = (e) => { //siempre que aprete el submit, se va a ejecutar esta funcion, por lo cual, si esta todo bien, va a ser false el error y no se va a mostrar la alerta
  e.preventDefault()
 
  if([nombre, propietario, email, alta, sintomas].includes('')){
@@ -33,15 +42,21 @@ const objetoPaciente = {
     propietario,
     email,
     alta,
-    sintomas
+    sintomas,
+    id: randomIdGenerator()
 }
+ //toma una copia del viejo array de pacientes y le mete al final el objetoPaciente
+ setPacientes([...pacientes, objetoPaciente]);
 
- setPacientes([...pacientes, objetoPaciente]); //toma una copia del viejo array de pacientes y le mete al final el objetoPaciente
+ setNombre('')
+ setPropietario('')
+ setEmail('')
+ setAlta('')
+ setSintomas('')
+
+} 
 
 //reiniciar el form
-
-
-}
 
 /*console.log(nombre) //muestra: " "
 
@@ -56,13 +71,11 @@ console.log(nombre)//muestra: hook*/
 
             <p className='mt-5 text-center mb-6'>
                 Añade Pacientes y {" "} <span className='text-indigo-600 font-bold text-lg'> Administralos </span>
-
-
             </p>
 
             <form className='bg-blue-200 shadow-md rounded-lg py-10 px-5 mb-10'
             onSubmit={handleSubmit}>
-                { error && <Error><p>Todos los campos son obligatorios</p></Error>
+                { error && <Error><p>Todos los campos son obligatorios</p></Error> //si error es true, se le pasa como children, el parrafo
               
                 }
                     <div className='mb-3'>

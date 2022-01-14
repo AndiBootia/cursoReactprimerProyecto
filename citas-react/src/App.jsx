@@ -13,6 +13,7 @@ function App() {
     //mr margin right
 
     const [pacientes, setPacientes] = useState([])
+    const [paciente, setPaciente] = useState({})
 
     /*const toma1valor = ((valor) => {
         console.log(valor)
@@ -28,7 +29,9 @@ function App() {
     pacientes={pacientes} //estoy pasando la lista de pacientes a formulario
     setPacientes={setPacientes}/>
     <ListadoPacientes
-    pacientes={pacientes}/> 
+    pacientes={pacientes}
+    newPaciente={setPaciente} //setPaciente va desde aca(app), a ListadoPacientes, luego ahi se lee y se pasa como prop a pacientes y luego en pacientes, se lee.
+    /> 
     </div>      
     
 </div>
