@@ -13,7 +13,7 @@ function App() {
     //mr margin right
 
     const [pacientes, setPacientes] = useState([])
-    const [paciente, setPaciente] = useState({})
+    const [pacienteSeleccionado, setPaciente] = useState({}) //este hook es para el paciente que se seleeciona para editar
 
     /*const toma1valor = ((valor) => {
         console.log(valor)
@@ -27,7 +27,8 @@ function App() {
     <div className="mt-12 md:flex">
     <Formulario
     pacientes={pacientes} //estoy pasando la lista de pacientes a formulario
-    setPacientes={setPacientes}/>
+    setPacientes={setPacientes}
+    paciente={pacienteSeleccionado}/>
     <ListadoPacientes
     pacientes={pacientes}
     newPaciente={setPaciente} //setPaciente va desde aca(app), a ListadoPacientes, luego ahi se lee y se pasa como prop a pacientes y luego en pacientes, se lee.

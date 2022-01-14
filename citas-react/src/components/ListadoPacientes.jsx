@@ -30,7 +30,7 @@ const ListadoPacientes = ({pacientes, newPaciente}) => {
                return(                  
             <Pacientes  
                 key={paciente.id}// cuando se itera y se muestran componentes en base a un arreglo, es necesario pasar un id único, sino da error de que se necesita un id unico para cada componente         
-                paciente={paciente}
+                paciente={paciente} //paciente que se esta modificando, se pasa a pacientes
                 setPaciente={newPaciente}
             />) //por cada elemento del array paciente (que es el que viene de la app), 
                

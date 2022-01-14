@@ -6,8 +6,10 @@ import Error from './Error'
 //px padding x, me separa de los bordes de derecha e izquierda del div
 
 
-const Formulario = ({pacientes, setPacientes}) => {
+const Formulario = ({pacientes, setPacientes, paciente}) => {
 
+   
+console.log(paciente)
 
 const [nombre, setNombre] = useState('')
 const [propietario, setPropietario] = useState('')
