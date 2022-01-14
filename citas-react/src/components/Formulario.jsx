@@ -9,7 +9,7 @@ import Error from './Error'
 const Formulario = ({pacientes, setPacientes, paciente}) => {
 
    
-console.log(paciente)
+
 
 const [nombre, setNombre] = useState('')
 const [propietario, setPropietario] = useState('')
@@ -18,6 +18,10 @@ const [alta, setAlta] = useState('')
 const [sintomas, setSintomas] = useState('')
 
 const [error, setError] = useState(false)
+
+useEffect(() => {
+   //console.log(paciente)
+}, [paciente])
 
 const randomIdGenerator = () => {
     const fecha = Date.now().toString(36)

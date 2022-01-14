@@ -69,3 +69,12 @@ titulo="tienda virtual"
 />
 
 Siempre que se va a pasar entre varios componentes, conviene ponerlo en el componente principal.
+
+useEffect
+
+Siempre es un callback, va a haber una arrow function dentro de él. Se ejecuta cuando un state cambia o cuando el componente esta listo.
+
+Como se ejecuta automáticamente cuando el componente esta listo, es un excelente lugar para colocar código para consultar una API
+o LocalStorage.
+ También se le puede pasar una dependencia, de esta forma va a estar escuchando a los cambios que sucedan en una variable.
+ Puede actualizar el componente cuando ese cambio suceda
