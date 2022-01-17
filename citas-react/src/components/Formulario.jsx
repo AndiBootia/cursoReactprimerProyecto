@@ -6,22 +6,16 @@ import Error from './Error'
 //px padding x, me separa de los bordes de derecha e izquierda del div
 
 
-const Formulario = ({pacientes, setPacientes, paciente}) => {
-
-   
+const Formulario = ({pacientes, setPacientes, paciente, setearPacienteSeleccionado}) => {   
 
 
-const [nombre, setNombre] = useState('')
+const [nombre, setNombre] = useState('') // cada uno es un atributo del objeto 
 const [propietario, setPropietario] = useState('')
 const [email, setEmail] = useState('')
 const [alta, setAlta] = useState('')
 const [sintomas, setSintomas] = useState('')
 
 const [error, setError] = useState(false)
-
-useEffect(() => {
-   //console.log(paciente)
-}, [paciente])
 
 const randomIdGenerator = () => {
     const fecha = Date.now().toString(36)
@@ -41,6 +35,8 @@ const handleSubmit = (e) => { //siempre que aprete el submit, se va a ejecutar e
      return;
  }
 
+
+
  setError(false) //se vuelve a poner en false, para que la alerta se vaya
 
 const objetoPaciente = {
@@ -48,21 +44,44 @@ const objetoPaciente = {
     propietario,
     email,
     alta,
-    sintomas,
-    id: randomIdGenerator()
+    sintomas    
 }
- //toma una copia del viejo array de pacientes y le mete al final el objetoPaciente
- setPacientes([...pacientes, objetoPaciente]);
 
+ if(paciente.id){
+    //editando registro
+    objetoPaciente.id = paciente.id //esto es porque el paciente que selecciono no tiene el id, entonces se lo pongo
+
+    const pacientesActualizados = pacientes.map((pacienteState) =>  //Estoy devolviendo un ARRAY NUEVO. Cuando encuentre el id igual, va a retornar el objeto nuevo, dentro del state (todos los states de arriba, que conforman un objeto)
+        pacienteState.id === paciente.id ? objetoPaciente : pacienteState) //Itero sobre los pacientes que tengo registrados, si en el que estoy, tiene el mismo ID que el paciente que voy a actualizar
+        // se devuelvo el objetoPaciente que es el objeto modificado, sino devuelvo tal cual está el pacienteState, porque "no es el que me interesa"       
+          
+    setPacientes(pacientesActualizados) 
+    setearPacienteSeleccionado({}) //vuelvo a dejarlo vacío, para que no tenga ningun paciente en memoria seleccionado y volver al agregar paciente normal
+    
+}else {
+
+    //nuevo registro
+    objetoPaciente.id = randomIdGenerator() //genero el id aca, para que no se genere cuando aprieto en editar
+    setPacientes([...pacientes, objetoPaciente]); //toma una copia del viejo array de pacientes y le mete al final el objetoPaciente
+    
+} 
+ //reiniciar el form
  setNombre('')
  setPropietario('')
  setEmail('')
  setAlta('')
  setSintomas('')
-
 } 
 
-//reiniciar el form
+useEffect(() => {    
+    if(Object.keys(pacientes).length > 0){ //Object.keys(...) sirve para ver lo que hay en el array
+        setNombre(paciente.nombre)
+        setPropietario(paciente.propietario)
+        setEmail(paciente.email)
+        setAlta(paciente.alta)
+        setSintomas(paciente.sintomas)            
+    }    
+}, [paciente])
 
 /*console.log(nombre) //muestra: " "
 
@@ -126,7 +145,7 @@ console.log(nombre)//muestra: hook*/
                         onChange={(e) => setSintomas(e.target.value)}/>
                     </div>
                     
-            <input type="submit" className='bg-indigo-600 rounded p-1 w-full text-white shadow-md uppercase font-black hover:font-extrabold cursor-cell transition-opacity'/>
+            <input value={paciente.id /* existe un id de paciente? osea tiene algo seleccionado el editar?*/? "editar" : "enviar" } type="submit" className='bg-indigo-600 rounded p-1 w-full text-white shadow-md uppercase font-black hover:font-extrabold cursor-cell transition-opacity'/>
 
 
             </form>

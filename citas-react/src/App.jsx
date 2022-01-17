@@ -15,6 +15,15 @@ function App() {
     const [pacientes, setPacientes] = useState([])
     const [pacienteSeleccionado, setPaciente] = useState({}) //este hook es para el paciente que se seleeciona para editar
 
+    const eliminarPaciente = (id) => {
+        console.log('eliminando paciente:' + ' ' + id)
+        const pacientesActualizados = pacientes.filter((paciente => {
+            paciente.id !== id            
+        }
+        ))
+        setPacientes(pacientesActualizados)
+    } 
+
     /*const toma1valor = ((valor) => {
         console.log(valor)
     })*/
@@ -28,10 +37,12 @@ function App() {
     <Formulario
     pacientes={pacientes} //estoy pasando la lista de pacientes a formulario
     setPacientes={setPacientes}
-    paciente={pacienteSeleccionado}/>
+    paciente={pacienteSeleccionado} //
+    setearPacienteSeleccionado={setPaciente}/>
     <ListadoPacientes
     pacientes={pacientes}
     newPaciente={setPaciente} //setPaciente va desde aca(app), a ListadoPacientes, luego ahi se lee y se pasa como prop a pacientes y luego en pacientes, se lee.
+    eliminarPaciente={eliminarPaciente}
     /> 
     </div>      
     

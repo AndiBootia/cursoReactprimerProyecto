@@ -78,3 +78,9 @@ Como se ejecuta automáticamente cuando el componente esta listo, es un excelent
 o LocalStorage.
  También se le puede pasar una dependencia, de esta forma va a estar escuchando a los cambios que sucedan en una variable.
  Puede actualizar el componente cuando ese cambio suceda
+
+SINTAXIS:
+
+useEffect(  () => {
+    console.log('el componente está listo');
+}, [aqui van las dependencias]);
