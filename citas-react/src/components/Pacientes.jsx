@@ -4,12 +4,12 @@ const Pacientes = ({paciente, setPaciente, eliminarPaciente}) => { //este pacien
     const { nombre, propietario, email, alta, sintomas, id  } = paciente
 
     const handleEliminar = () => {
-        const respuesta = confirm('Deseas eliminar este paciente?')
+        //const respuesta = confirm('Deseas eliminar este paciente?')
 
-        if(respuesta){
+        //if(respuesta){
             eliminarPaciente(id)/*este id es el del destructuring del arreglo de arriba. 
             Este ID vuelve hasta la APP, donde puedo usarlo para la funcion de eliminar paciente*/
-        }
+        //}
     }
     return (
         <div>
@@ -35,7 +35,7 @@ const Pacientes = ({paciente, setPaciente, eliminarPaciente}) => { //este pacien
             }>  
                EDITAR </button>
                <button type="button" className="py-2 px-9 bg-indigo-600 text-white rounded-md shadow-md hover:font-extrabold hover:bg-indigo-700"   
-               onClick={handleEliminar}> ELIMINAR </button> 
+               onClick={handleEliminar /*No se le pone () a la función, porque sino llamaria automáticamente a la función y no esperaría a que suceda el evento del click, antes de ejecutarla*/}> ELIMINAR </button> 
                 </div>               
            </div> 
            
